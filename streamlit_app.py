@@ -15,7 +15,7 @@ for i in range(inputs):
 
     with columns_width_weights[i]:
         st.markdown(f"w<sub>{i}</sub>", unsafe_allow_html=True)
-        weight = st.number_input(f"w{i}", label_visibility="collapsed", value=0.0)
+        w[i] = st.number_input(f"w{i}", label_visibility="collapsed", value=0.0)
     
 
 st.text("Weights: " + str(w))
@@ -29,7 +29,7 @@ for i in range(inputs):
 
     with columns_width_inputs[i]:
         st.markdown(f"x<sub>{i}</sub>", unsafe_allow_html=True)
-        input = st.number_input(f"x{i}", label_visibility="collapsed", value=0.0)
+        x[i] = st.number_input(f"x{i}", label_visibility="collapsed", value=0.0)
 
 st.text("Inputs: " + str(x))
 
