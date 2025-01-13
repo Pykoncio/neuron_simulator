@@ -8,11 +8,15 @@ inputs = st.slider("Choose the number of inputs/weights for the neuron", 1, 10, 
 
 st.title("Weights")
 w = []
+columns_width = st.columns(inputs)
 
 for i in range(inputs):
-    st.markdown(f"w<sub>{i}</sub>", unsafe_allow_html=True)
-    weight = st.number_input(f"Weight {i+1}", value=0.0)
-    w.append(weight)
+    w.append(i)
+
+    with columns_width[i]:
+        st.markdown(f"w<sub>{i}</sub>", unsafe_allow_html=True)
+        weight = st.number_input(f"", value=0.0)
+    
 
 st.text("Weights: " + str(w))
 
@@ -20,9 +24,11 @@ st.title("Inputs")
 x = []
 
 for i in range(inputs):
-    st.markdown(f"x<sub>{i}</sub>", unsafe_allow_html=True)
-    input = st.number_input(f"Input {i+1}", value=0.0)
-    x.append(input)
+    x.append(i)
+
+    with columns_width[i]:
+        st.markdown(f"x<sub>{i}</sub>", unsafe_allow_html=True)
+        input = st.number_input(f"", value=0.0)
 
 st.text("Inputs: " + str(x))
 
@@ -33,7 +39,7 @@ with col1:
     b = st.number_input("Enter the value of the bias", value=0.0)
 
 with col2:
-    st.subheader("Select the activation function")
+    st.title("Select the activation function")
     
     activation_function = st.selectbox("Choose the activation function",
         ("Sigmoide", "ReLU", "Hiperbolic Tangent", "Binary Step"))
