@@ -8,12 +8,12 @@ inputs = st.slider("Choose the number of inputs/weights for the neuron", 1, 10, 
 
 st.title("Weights")
 w = []
-columns_width = st.columns(inputs)
+columns_width_weights = st.columns(inputs)
 
 for i in range(inputs):
     w.append(i)
 
-    with columns_width[i]:
+    with columns_width_weights[i]:
         st.markdown(f"w<sub>{i}</sub>", unsafe_allow_html=True)
         weight = st.number_input(f"w{i}", label_visibility="collapsed", value=0.0)
     
@@ -22,11 +22,12 @@ st.text("Weights: " + str(w))
 
 st.title("Inputs")
 x = []
+columns_width_inputs = st.columns(inputs)
 
 for i in range(inputs):
     x.append(i)
 
-    with columns_width[i]:
+    with columns_width_inputs[i]:
         st.markdown(f"x<sub>{i}</sub>", unsafe_allow_html=True)
         input = st.number_input(f"x{i}", label_visibility="collapsed", value=0.0)
 
